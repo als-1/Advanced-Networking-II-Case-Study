@@ -1,0 +1,49 @@
+hostname Toronto
+!
+no ip domain lookup
+!
+interface Loopback1
+ ip address 1.1.1.1 255.255.255.255
+ ip nat inside
+!
+interface GigabitEthernet0/0/0
+ description Link to MPLS Cloud
+ ip address 10.202.10.1 255.255.255.248
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description Trunk Link to D1
+ no ip address
+ no shutdown
+!
+interface GigabitEthernet0/0/1.10
+ description Link to D1 Local LAN
+ encapsulation dot1Q 10
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.100
+ description Link to D1 Internet
+ encapsulation dot1Q 100
+ ip nat outside
+!
+interface Serial0/1/0
+ shutdown
+!
+interface Serial0/1/1
+ shutdown
+!
+interface GigabitEthernet0
+ shutdown
+!
+ip nat inside source list NAT-ACL interface GigabitEthernet0/0/1.100
+ip route 0.0.0.0 0.0.0.0 199.212.32.254
+!
+ip access-list standard NAT-ACL
+ 20 permit 1.1.1.1
+ 10 permit 172.16.0.0 0.0.255.255
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+end

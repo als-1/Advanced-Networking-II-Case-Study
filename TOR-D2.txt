@@ -1,0 +1,46 @@
+hostname TOR-D2
+!
+vrf definition INET
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+ip routing
+!
+no ip domain lookup
+!
+vlan 100
+ name R1-INET
+!
+vlan 300
+ name R3-INET
+!
+vlan 400
+ name R4-INET
+!
+interface GigabitEthernet0/0
+ shutdown
+!
+interface range GigabitEthernet1/0/13-24, GigabitEthernet1/1/1-4,AP1/0/1
+ shutdown
+!
+interface Vlan100
+ vrf forwarding INET
+ ip address 199.212.32.254 255.255.255.0
+!
+interface Vlan300
+ vrf forwarding INET
+ ip address 209.165.200.254 255.255.255.0
+!
+interface Vlan400
+ vrf forwarding INET
+ ip address 198.51.100.254 255.255.255.0
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+end

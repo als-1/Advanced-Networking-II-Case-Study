@@ -1,0 +1,21 @@
+hostname TOR-D1
+!
+ip routing
+!
+no ip domain lookup
+!
+vlan 100
+ name R1-INET
+!
+interface GigabitEthernet0/0
+ shutdown
+!
+!
+interface range GigabitEthernet1/0/12-24, GigabitEthernet1/1/1-4,AP1/0/1
+ shutdown
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+end

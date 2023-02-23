@@ -1,0 +1,16 @@
+hostname TOR-A1
+!
+no ip domain lookup
+no ip routing
+!
+interface GigabitEthernet0/0
+ shutdown
+!
+interface range GigabitEthernet1/0/5-24,GigabitEthernet1/1/1-4
+ shutdown
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+end

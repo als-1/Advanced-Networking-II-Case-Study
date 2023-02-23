@@ -1,0 +1,57 @@
+hostname Ottawa
+!
+no ip domain lookup
+!
+interface Loopback1
+ ip address 3.3.3.3 255.255.255.255
+ ip nat inside
+!
+interface Loopback1
+ ip nat inside
+!
+interface Loopback101
+ ip nat inside
+!
+interface Loopback102
+ ip nat inside
+!
+interface Loopback103
+ ip nat inside
+!
+interface GigabitEthernet0/0/0
+ description Link to MPLS Cloud
+ ip address 10.202.20.3 255.255.255.248
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description Link to Internet
+ ip nat outside
+ no shutdown
+!
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 64000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 64000
+ shutdown
+!
+interface GigabitEthernet0
+ shutdown
+!
+ip nat inside source list NAT-ACL interface GigabitEthernet0/0/1 overload
+ip route 0.0.0.0 0.0.0.0 209.165.200.254
+!
+!
+ip access-list standard NAT-ACL
+ 20 permit 3.3.3.3
+ 10 permit 172.16.0.0 0.0.255.255
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+end

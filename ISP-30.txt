@@ -1,0 +1,26 @@
+hostname ISP
+!
+no ip domain lookup
+!
+interface Loopback1
+ ip address 2.2.2.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0
+ description Link to MPLS Cloud
+ ip address 10.202.10.2 255.255.255.248
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description Link to MPLS Cloud
+ ip address 10.202.20.2 255.255.255.248
+ no shutdown
+!
+!
+interface GigabitEthernet0
+ shutdown
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+end
