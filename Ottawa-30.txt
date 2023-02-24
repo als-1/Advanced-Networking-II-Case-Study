@@ -6,17 +6,20 @@ interface Loopback1
  ip address 3.3.3.3 255.255.255.255
  ip nat inside
 !
-interface Loopback1
- ip nat inside
-!
 interface Loopback101
+ ip address 172.16.84.30 255.255.255.0
  ip nat inside
 !
 interface Loopback102
+ ip address 172.16.85.30 255.255.255.0
  ip nat inside
 !
 interface Loopback103
+ ip address 172.16.86.30 255.255.255.0
  ip nat inside
+!
+interface Tunnel1
+ ip address 10.1.30.2 255.255.255.0
 !
 interface GigabitEthernet0/0/0
  description Link to MPLS Cloud
@@ -25,6 +28,7 @@ interface GigabitEthernet0/0/0
 !
 interface GigabitEthernet0/0/1
  description Link to Internet
+ ip address 209.165.200.30 255.255.255.0
  ip nat outside
  no shutdown
 !

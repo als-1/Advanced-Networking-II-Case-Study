@@ -6,6 +6,9 @@ interface Loopback1
  ip address 1.1.1.1 255.255.255.255
  ip nat inside
 !
+interface Tunnel1
+ ip address 10.1.30.1 255.255.255.0
+!
 interface GigabitEthernet0/0/0
  description Link to MPLS Cloud
  ip address 10.202.10.1 255.255.255.248
@@ -19,11 +22,13 @@ interface GigabitEthernet0/0/1
 interface GigabitEthernet0/0/1.10
  description Link to D1 Local LAN
  encapsulation dot1Q 10
+ ip address 172.16.30.1 255.255.255.0
  ip nat inside
 !
 interface GigabitEthernet0/0/1.100
  description Link to D1 Internet
  encapsulation dot1Q 100
+ ip address 199.212.32.30 255.255.255.0
  ip nat outside
 !
 interface Serial0/1/0
