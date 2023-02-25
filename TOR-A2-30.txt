@@ -3,6 +3,10 @@ hostname TOR-A2
 no ip domain lookup
 no ip routing
 !
+vtp domain OTU30
+vtp version 3
+vtp mode client
+!
 interface GigabitEthernet0/0
  shutdown
 !

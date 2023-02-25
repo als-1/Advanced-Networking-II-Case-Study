@@ -7,6 +7,31 @@ no ip domain lookup
 vlan 100
  name R1-INET
 !
+vlan 300
+ name R3-INET
+!
+vlan 400
+ name R4-INET
+!
+vlan 10
+ name DATA
+!
+vlan 230
+ name VOICE
+!
+vlan 330
+ name MANAGEMENT
+!
+vlan 123
+ name NATIVE
+!
+vlan 999
+ name UNUSED
+!
+vtp domain OTU30
+vtp version 3
+vtp mode server
+!
 interface GigabitEthernet0/0
  shutdown
 !
@@ -50,3 +75,5 @@ line con 0
  logging synchronous
 !
 end
+!
+vtp primary vlan

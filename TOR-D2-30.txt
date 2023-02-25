@@ -21,6 +21,10 @@ vlan 300
 vlan 400
  name R4-INET
 !
+vtp domain OTU30
+vtp version 3
+vtp mode client
+!
 interface GigabitEthernet0/0
  shutdown
 !
