@@ -10,6 +10,15 @@ vlan 100
 interface GigabitEthernet0/0
  shutdown
 !
+interface range GigabitEthernet1/0/1-4
+ channel-group 1 mode on
+!
+interface range GigabitEthernet1/0/5-6
+ channel-group 2 mode desirable
+!
+interface range GigabitEthernet1/0/7-8
+ channel-group 3 mode desirable
+!
 !
 interface range GigabitEthernet1/0/12-24, GigabitEthernet1/1/1-4,AP1/0/1
  shutdown

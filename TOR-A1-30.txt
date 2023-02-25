@@ -6,6 +6,12 @@ no ip routing
 interface GigabitEthernet0/0
  shutdown
 !
+interface range GigabitEthernet1/0/1-2
+ channel-group 2 mode desirable
+!
+interface range GigabitEthernet1/0/3-4
+ channel-group 3 mode active
+!
 interface range GigabitEthernet1/0/5-24,GigabitEthernet1/1/1-4
  shutdown
 !
