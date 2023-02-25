@@ -36,6 +36,24 @@ interface range GigabitEthernet1/0/7-8
 interface range GigabitEthernet1/0/13-24, GigabitEthernet1/1/1-4,AP1/0/1
  shutdown
 !
+interface Port-channel 1
+ switchport mode trunk
+ switchport trunk native vlan 123
+ switchport trunk allowed vlan 10,100,230,330
+ switchport nonegotiate
+!
+interface Port-channel 2
+ switchport mode trunk
+ switchport trunk native vlan 123
+ switchport trunk allowed vlan 10,230,330
+ switchport nonegotiate
+!
+interface Port-channel 3
+ switchport mode trunk
+ switchport trunk native vlan 123
+ switchport trunk allowed vlan 10,230,330
+ switchport nonegotiate
+!
 interface Vlan100
  vrf forwarding INET
  ip address 199.212.32.254 255.255.255.0

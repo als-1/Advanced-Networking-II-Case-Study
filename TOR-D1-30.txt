@@ -19,9 +19,31 @@ interface range GigabitEthernet1/0/5-6
 interface range GigabitEthernet1/0/7-8
  channel-group 3 mode desirable
 !
+interface GigabitEthernet1/0/11
+ switchport mode trunk
+ switchport trunk allowed vlan 10,100
+ switchport nonegotiate
 !
 interface range GigabitEthernet1/0/12-24, GigabitEthernet1/1/1-4,AP1/0/1
  shutdown
+!
+interface Port-channel 1
+ switchport mode trunk
+ switchport trunk native vlan 123
+ switchport trunk allowed vlan 10,100,230,330
+ switchport nonegotiate
+!
+interface Port-channel 2
+ switchport mode trunk
+ switchport trunk native vlan 123
+ switchport trunk allowed vlan 10,230,330
+ switchport nonegotiate
+!
+interface Port-channel 3
+ switchport mode trunk
+ switchport trunk native vlan 123
+ switchport trunk allowed vlan 10,230,330
+ switchport nonegotiate
 !
 line con 0
  exec-timeout 0 0
