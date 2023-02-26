@@ -58,6 +58,15 @@ interface Port-channel 3
  switchport trunk allowed vlan 10,230,330
  switchport nonegotiate
 !
+interface Vlan10
+ ip address 172.16.30.6 255.255.255.0
+!
+interface Vlan230
+ ip address 172.16.130.6 255.255.255.0
+!
+interface Vlan330
+ ip address 172.16.230.6 255.255.255.0
+!
 interface Vlan100
  vrf forwarding INET
  ip address 199.212.32.254 255.255.255.0
