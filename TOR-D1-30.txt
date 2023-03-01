@@ -68,6 +68,7 @@ interface Port-channel 2
  switchport trunk native vlan 123
  switchport trunk allowed vlan 10,230,330
  switchport nonegotiate
+ spanning-tree guard root
 !
 interface Port-channel 3
  switchport mode trunk
