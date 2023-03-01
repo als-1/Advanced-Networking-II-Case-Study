@@ -7,6 +7,8 @@ vtp domain OTU30
 vtp version 3
 vtp mode client
 !
+spanning-tree portfast bpduguard default
+!
 interface GigabitEthernet0/0
  shutdown
 !
@@ -20,6 +22,9 @@ interface range GigabitEthernet1/0/5-24,GigabitEthernet1/1/1-4
  switchport mode access
  switchport access vlan 999
  shutdown
+!
+interface range GigabitEthernet1/0/12-24
+ switchport host
 !
 interface Port-channel 2
  switchport mode trunk
