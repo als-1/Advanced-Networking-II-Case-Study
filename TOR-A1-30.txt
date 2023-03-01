@@ -17,6 +17,8 @@ interface range GigabitEthernet1/0/3-4
  channel-group 3 mode active
 !
 interface range GigabitEthernet1/0/5-24,GigabitEthernet1/1/1-4
+ switchport mode access
+ switchport access vlan 999
  shutdown
 !
 interface Port-channel 2

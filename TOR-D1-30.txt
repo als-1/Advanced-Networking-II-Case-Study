@@ -49,7 +49,9 @@ interface GigabitEthernet1/0/11
  switchport trunk allowed vlan 10,100
  switchport nonegotiate
 !
-interface range GigabitEthernet1/0/12-24, GigabitEthernet1/1/1-4,AP1/0/1
+interface range GigabitEthernet1/0/9-10, GigabitEthernet1/0/12-24, GigabitEthernet1/1/1-4,AP1/0/1
+ switchport mode access
+ switchport access vlan 999
  shutdown
 !
 interface Port-channel 1
