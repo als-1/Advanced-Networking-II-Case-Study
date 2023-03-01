@@ -25,6 +25,9 @@ vtp domain OTU30
 vtp version 3
 vtp mode client
 !
+spanning-tree vlan 10,330 root secondary
+spanning-tree vlan 230 root primary
+!
 interface GigabitEthernet0/0
  shutdown
 !
