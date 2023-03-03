@@ -28,6 +28,8 @@ vtp mode client
 spanning-tree vlan 10,330 root secondary
 spanning-tree vlan 230 root primary
 !
+track 290 interface Port-channel2 line-protocol
+!
 interface GigabitEthernet0/0
  shutdown
 !
@@ -84,6 +86,7 @@ interface Vlan230
  standby 290 ip 172.16.130.254
  standby 290 priority 130
  standby 290 preempt
+ standby 290 track 290 decrement 40
 !
 interface Vlan330
  ip address 172.16.230.6 255.255.255.0
