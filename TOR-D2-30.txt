@@ -74,12 +74,22 @@ interface Port-channel 3
 !
 interface Vlan10
  ip address 172.16.30.6 255.255.255.0
+ standby version 2
+ standby 70 ip 172.16.30.254
+ standby 70 preempt
 !
 interface Vlan230
  ip address 172.16.130.6 255.255.255.0
+ standby version 2
+ standby 290 ip 172.16.130.254
+ standby 290 priority 130
+ standby 290 preempt
 !
 interface Vlan330
  ip address 172.16.230.6 255.255.255.0
+ standby version 2
+ standby 390 ip 172.16.230.254
+ standby 390 preempt
 !
 interface Vlan100
  vrf forwarding INET
