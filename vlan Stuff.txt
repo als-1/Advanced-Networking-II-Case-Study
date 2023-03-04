@@ -1,0 +1,30 @@
+vlan 10
+ name DATA
+!
+vlan 100
+ name R1-INET
+!
+vlan 123
+ name NATIVE
+!
+vlan 230
+ name VOICE
+!
+vlan 300
+ name R3-INET
+!
+vlan 330
+ name MANAGEMENT
+!
+vlan 400
+ name R4-INET
+!
+vlan 999
+ name UNUSED
+ 
+vtp domain OTU30
+vtp mode client
+vtp version 3
+
+
+vtp primary vlan
