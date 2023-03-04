@@ -1,6 +1,178 @@
+
+Current configuration : 7059 bytes
+!
+! Last configuration change at 08:46:46 UTC Tue Feb 28 2023
+!
+version 16.12
+service timestamps debug datetime msec
+service timestamps log datetime msec
+! Call-home is enabled by Smart-Licensing.
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+!
 hostname Toronto
 !
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !        
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+!
+!
+!
+!
+!
+!
 no ip domain lookup
+!         
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!         
+crypto pki trustpoint TP-self-signed-59485405
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-59485405
+ revocation-check none
+ rsakeypair TP-self-signed-59485405
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain TP-self-signed-59485405
+ certificate self-signed 01
+  3082032C 30820214 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  2F312D30 2B060355 04031324 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 35393438 35343035 301E170D 32333032 32373139 31383434 
+  5A170D33 30303130 31303030 3030305A 302F312D 302B0603 55040313 24494F53 
+  2D53656C 662D5369 676E6564 2D436572 74696669 63617465 2D353934 38353430 
+  35308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 0A028201 
+  0100B5E4 DE7D53B2 91667AF7 B85CCB0A 28EADE81 6F091CF8 6B848010 7AE97BAC 
+  A3420372 EDC67D80 F0A77F27 840B9B95 60C3DF2C 078E8BBE 06296C3C A85EC53C 
+  8A7D9B54 BFBA6153 73FA20D4 7A2C9061 24EE2269 3F58D1C9 EC7FE4C9 A128317B 
+  3091E46E 88272205 97716043 2500FB51 A9365356 716F13AB 18E0FA07 B553989F 
+  4DA70B6E 4DDF32B7 9456985D A819B142 2BD2322E D401463E 6F737646 435D2AB8 
+  7B024DF7 8C3DA016 5AF84BE0 D58E6D17 7F2458FF AFE40784 B4B204A4 CB867EAE 
+  79F97FE4 5DC36DA1 D26D47C3 DDD3EF6E 88E53405 800253D5 073A31E7 90A42CDE 
+  B658FA7E 2A1D3813 CF4A59F8 B745B5F5 F286AACE 18C68FF0 D457AB49 3898B09D 
+  A92F0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 149EFFB8 EF34C396 2966F0FD C535DC5F 94D76E2A 1F301D06 
+  03551D0E 04160414 9EFFB8EF 34C39629 66F0FDC5 35DC5F94 D76E2A1F 300D0609 
+  2A864886 F70D0101 05050003 82010100 602E1B8C 6D128130 B8E1A8D2 3F371810 
+  48F4CE1B 62767FC6 DE35A634 470B5717 D06879A3 6400EDF2 A3BD2934 5DCD8D21 
+  03C9ED12 224AC984 DEABCEBB 56C64E05 69C13CF8 16AC480B D77E32A4 4136EBBE 
+  0C8CC3DB 668BDE9B 3BC8C363 589BD4DB A497D248 221E8E8B 8F0F91F2 99E99976 
+  4CA84EDE BF7C81BC C8A86F98 39F5F962 D9F39A96 8B86C4B3 6442DF5B 40F1B52B 
+  DE4CF06E 10AC660F EA600334 13041A53 AF1D9ED6 7D751289 CFBB495D 70C39703 
+  655D0D0E EB66E3F5 532D0D24 D55166B3 45C2A228 C9CE9237 7C411C9D 67DE862F 
+  98420C46 B6D4C53C B9B35A4E B5A30AAB A3D741AE 26695306 525BDFDB 4AB8464C 
+  A8CA579F AFCCA8D7 A6989070 133DD44F
+        quit
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+        quit
+!
+!
+no license feature hseck9
+license udi pid ISR4331/K9 sn FLM2420069T
+license boot level appxk9
+license boot level uck9 disable
+license boot level securityk9
+memory free low-watermark processor 67065
+!
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!         
+!         
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
 !
 interface Loopback1
  ip address 1.1.1.1 255.255.255.255
@@ -12,12 +184,12 @@ interface Tunnel1
 interface GigabitEthernet0/0/0
  description Link to MPLS Cloud
  ip address 10.202.10.1 255.255.255.248
- no shutdown
+ negotiation auto
 !
 interface GigabitEthernet0/0/1
  description Trunk Link to D1
  no ip address
- no shutdown
+ negotiation auto
 !
 interface GigabitEthernet0/0/1.10
  description Link to D1 Local LAN
@@ -31,24 +203,59 @@ interface GigabitEthernet0/0/1.100
  ip address 199.212.32.30 255.255.255.0
  ip nat outside
 !
-interface Serial0/1/0
- shutdown
+interface GigabitEthernet0/0/2
+ no ip address
+ negotiation auto
 !
+interface Serial0/1/0
+ no ip address
+ shutdown
+!         
 interface Serial0/1/1
+ no ip address
  shutdown
 !
 interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ ip dhcp client client-id ascii FLM242611YB
+ ip address dhcp
  shutdown
+ negotiation auto
 !
-ip nat inside source list NAT-ACL interface GigabitEthernet0/0/1.100
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip http client source-interface GigabitEthernet0
+ip nat inside source list NAT-ACL interface GigabitEthernet0/0/1.100 overload
 ip route 0.0.0.0 0.0.0.0 199.212.32.254
+!
 !
 ip access-list standard NAT-ACL
  20 permit 1.1.1.1
  10 permit 172.16.0.0 0.0.255.255
+!         
+!         
+!
+!
+!
+!
+!
+control-plane
+!
 !
 line con 0
  exec-timeout 0 0
  logging synchronous
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login
 !
-end
+!
+!
+!
+!
+!
+end  
