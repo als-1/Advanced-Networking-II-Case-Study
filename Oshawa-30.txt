@@ -20,6 +20,11 @@ interface Loopback103
 !
 interface Tunnel1
  ip address 10.1.30.3 255.255.255.0
+ bandwidth 1000000
+ delay 80
+ tunnel source GigabitEthernet0/0/1
+ tunnel mode gre multipoint
+ tunnel key 90
 !
 interface GigabitEthernet0/0/0
  no ip address
