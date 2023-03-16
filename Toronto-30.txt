@@ -7,7 +7,14 @@ interface Loopback1
  ip nat inside
 !
 interface Tunnel1
+ description DMVPN-HUB
  ip address 10.1.30.1 255.255.255.0
+ ip mtu 1400
+ ip nhrp authentication AKR
+ ip nhrp map multicast dynamic
+ ip nhrp network-id 30
+ ip nhrp redirect
+ ip tcp adjust-mss 1360
  bandwidth 1000000
  delay 80
  tunnel source GigabitEthernet0/0/1.100
