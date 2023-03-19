@@ -38,6 +38,8 @@ interface Tunnel1
 interface GigabitEthernet0/0/0
  description Link to MPLS Cloud
  ip address 10.202.10.1 255.255.255.248
+ mpls ip
+ mpls label protocol ldp
  no shutdown
 !
 interface GigabitEthernet0/0/1
@@ -72,6 +74,8 @@ ip route 0.0.0.0 0.0.0.0 199.212.32.254
 ip access-list standard NAT-ACL
  20 permit 1.1.1.1
  10 permit 172.16.0.0 0.0.255.255
+!
+mpls ldp router-id Loopback1
 !
 line con 0
  exec-timeout 0 0
