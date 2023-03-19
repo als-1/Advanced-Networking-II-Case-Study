@@ -23,6 +23,18 @@ interface GigabitEthernet0/0/1
 interface GigabitEthernet0
  shutdown
 !
+router eigrp OntarioTech30
+ !
+ address-family ipv4 unicast autonomous-system 30
+  !
+  topology base
+  exit-af-topology
+  network 2.2.2.2 0.0.0.0
+  network 10.202.10.2 0.0.0.0
+  network 10.202.20.2 0.0.0.0
+  eigrp router-id 2.2.2.2
+ exit-address-family
+!
 mpls ldp router-id Loopback1
 !
 line con 0

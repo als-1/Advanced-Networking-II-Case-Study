@@ -96,6 +96,8 @@ interface Vlan330
  standby 390 priority 130
  standby 390 preempt
 !
+ip route 0.0.0.0 0.0.0.0 172.16.30.1
+!
 line con 0
  exec-timeout 0 0
  logging synchronous

@@ -68,8 +68,30 @@ interface Serial0/1/1
 interface GigabitEthernet0
  shutdown
 !
+router eigrp OntarioTech30
+ !
+ address-family ipv4 unicast autonomous-system 30
+  !
+  af-interface GigabitEthernet0/0/1.10
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Tunnel1
+   summary-address 172.16.0.0 255.255.0.0
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 1.1.1.1 0.0.0.0
+  network 10.1.30.1 0.0.0.0
+  network 10.202.10.1 0.0.0.0
+  network 172.16.30.1 0.0.0.0
+  eigrp router-id 1.1.1.1
+ exit-address-family
+!
 ip nat inside source list NAT-ACL interface GigabitEthernet0/0/1.100
 ip route 0.0.0.0 0.0.0.0 199.212.32.254
+ip route 172.16.0.0 255.255.0.0 172.16.30.254
 !
 ip access-list standard NAT-ACL
  20 permit 1.1.1.1
