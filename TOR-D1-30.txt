@@ -102,6 +102,12 @@ line con 0
  exec-timeout 0 0
  logging synchronous
 !
+clock timezone EST -5 0
+clock summer-time EDT recurring
+!
+ntp master 4
+ntp server 1.1.1.1
+!
 end
 !
 vtp primary vlan

@@ -105,4 +105,10 @@ line con 0
  exec-timeout 0 0
  logging synchronous
 !
+clock timezone EST -5 0
+clock summer-time EDT recurring
+!
+ntp master 3
+ntp server 2.2.2.2
+!
 end
